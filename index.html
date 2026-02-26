@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consulta Estudiantil</title>
+</head>
+<body>
+
+<h2>Ingreso al Sistema</h2>
+
+<input type="text" id="documento" placeholder="Documento"><br><br>
+<input type="password" id="clave" placeholder="Clave"><br><br>
+
+<button onclick="login()">Ingresar</button>
+
+<p id="resultado"></p>
+
+<script>
+
+let estudiantes = [];
+
+fetch("estudiantes.csv")
+    .then(response => response.text())
+    .then(data => {
+        let filas = data.split("\n").slice(1);
+        filas.forEach(fila => {
+            let columnas = fila.split(",");
+            estudiantes.push({
+                documento: columnas[0]?.trim(),
+                clave: columnas[1]?.trim(),
+                nombre: columnas[2]?.trim(),
+                curso: columnas[3]?.trim(),
+                nota: columnas[4]?.trim()
+            });
+        });
+    });
+
+function login() {
+    let doc = document.getElementById("documento").value;
+    let clave = document.getElementById("clave").value;
+    let resultado = document.getElementById("resultado");
+
+    let estudiante = estudiantes.find(e => 
+        e.documento === doc && e.clave === clave
+    );
+
+    if (estudiante) {
+        resultado.innerHTML =
+            "Bienvenido " + estudiante.nombre + "<br><br>" +
+            "Curso: " + estudiante.curso + "<br>" +
+            "Nota: " + estudiante.nota;
+    } else {
+        resultado.innerHTML = "Documento o clave incorrectos";
+    }
+}
+
+</script>
+
+</body>
+</html>
