@@ -23,7 +23,7 @@ fetch("estudiantes.csv")
     .then(data => {
         let filas = data.split("\n").slice(1);
         filas.forEach(fila => {
-            let columnas = fila.split("\t");
+            let columnas = fila.split(";");
             estudiantes.push({
                 documento: columnas[0]?.trim(),
                 clave: columnas[1]?.trim(),
@@ -58,3 +58,4 @@ function login() {
 </body>
 
 </html>
+
