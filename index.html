@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Consulta Estudiantil</title>
+<meta charset="UTF-8">
+<title>Consulta Académica</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #2b5876, #4e4376);
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+.contenedor {
+    background: white;
+    color: black;
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background: #4e4376;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2b5876;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background: #4e4376;
+    color: white;
+    padding: 8px;
+}
+
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.baja { background-color: #ffcccc; }
+.media { background-color: #fff3cd; }
+.alta { background-color: #d4edda; }
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Ingreso al Sistema</h2>
+<div class="contenedor">
+
+<h2>Ingreso al Sistema Académico</h2>
 
 <input type="text" id="documento" placeholder="Documento"><br><br>
 <input type="password" id="clave" placeholder="Clave"><br><br>
@@ -14,6 +84,8 @@
 <button onclick="login()">Ingresar</button>
 
 <div id="resultado"></div>
+
+</div>
 
 <script>
 
@@ -25,16 +97,11 @@ fetch("estudiantes.csv")
     .then(data => {
 
         let filas = data.trim().split(/\r?\n/);
-
-        // Encabezados separados por ;
         encabezados = filas[0].split(";").map(e => e.trim());
-
-        filas.shift(); // quitar encabezado
+        filas.shift();
 
         filas.forEach(fila => {
-
             let columnas = fila.split(";");
-
             let estudiante = {};
 
             encabezados.forEach((titulo, index) => {
@@ -61,16 +128,24 @@ function login() {
         tabla += "<strong>Estudiante:</strong> " + estudiante["Nombre"] + "<br>";
         tabla += "<strong>Curso:</strong> " + estudiante["Curso"] + "<br><br>";
 
-        tabla += "<table border='1' cellpadding='5'>";
+        tabla += "<table>";
         tabla += "<tr><th>Materia</th><th>Nota</th></tr>";
 
-        // Mostrar materias (desde columna 4 en adelante)
         for (let i = 4; i < encabezados.length; i++) {
 
             let materia = encabezados[i];
-            let nota = estudiante[materia] || "";
+            let nota = estudiante[materia];
 
-            tabla += "<tr><td>" + materia + "</td><td>" + nota + "</td></tr>";
+            let clase = "";
+            let valor = parseFloat(nota);
+
+            if (!isNaN(valor)) {
+                if (valor < 3) clase = "baja";
+                else if (valor < 4) clase = "media";
+                else clase = "alta";
+            }
+
+            tabla += `<tr class="${clase}"><td>${materia}</td><td>${nota || ""}</td></tr>`;
         }
 
         tabla += "</table>";
@@ -78,7 +153,7 @@ function login() {
         resultado.innerHTML = tabla;
 
     } else {
-        resultado.innerHTML = "<p style='color:red;'>Documento o clave incorrectos</p>";
+        resultado.innerHTML = "<p class='error'>Documento o clave incorrectos</p>";
     }
 }
 
