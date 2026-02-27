@@ -21,9 +21,11 @@ let estudiantes = [];
 fetch("estudiantes.csv")
     .then(response => response.text())
     .then(data => {
-        let filas = data.split("\n").slice(1);
-        filas.forEach(fila => {
-            let columnas = fila.split(";");
+        let filas = data.trim().split(/\r?\n/);
+filas.shift(); // quitar encabezado
+
+filas.forEach(fila => {
+    let columnas = fila.split(";");
             estudiantes.push({
                 documento: columnas[0]?.trim(),
                 clave: columnas[1]?.trim(),
@@ -58,4 +60,5 @@ function login() {
 </body>
 
 </html>
+
 
