@@ -26,21 +26,19 @@ fetch("estudiantes.csv")
 
         let filas = data.trim().split(/\r?\n/);
 
-        // Guardar encabezados (separado por TAB)
-        encabezados = filas[0].split("\t");
+        // Encabezados separados por ;
+        encabezados = filas[0].split(";").map(e => e.trim());
 
-        // Quitar encabezado
-        filas.shift();
+        filas.shift(); // quitar encabezado
 
         filas.forEach(fila => {
 
-            let columnas = fila.split("\t");
+            let columnas = fila.split(";");
 
-            // Crear objeto dinámico con todas las columnas
             let estudiante = {};
 
             encabezados.forEach((titulo, index) => {
-                estudiante[titulo.trim()] = columnas[index]?.trim();
+                estudiante[titulo] = columnas[index]?.trim();
             });
 
             estudiantes.push(estudiante);
@@ -66,11 +64,11 @@ function login() {
         tabla += "<table border='1' cellpadding='5'>";
         tabla += "<tr><th>Materia</th><th>Nota</th></tr>";
 
-        // Mostrar desde la columna 4 en adelante (materias)
+        // Mostrar materias (desde columna 4 en adelante)
         for (let i = 4; i < encabezados.length; i++) {
 
             let materia = encabezados[i];
-            let nota = estudiante[materia];
+            let nota = estudiante[materia] || "";
 
             tabla += "<tr><td>" + materia + "</td><td>" + nota + "</td></tr>";
         }
@@ -88,6 +86,4 @@ function login() {
 
 </body>
 </html>
-
-
 
