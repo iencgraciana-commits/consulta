@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Consulta Estudiantil</title>
 </head>
 <body>
@@ -12,53 +13,81 @@
 
 <button onclick="login()">Ingresar</button>
 
-<p id="resultado"></p>
+<div id="resultado"></div>
 
 <script>
 
 let estudiantes = [];
+let encabezados = [];
 
 fetch("estudiantes.csv")
     .then(response => response.text())
     .then(data => {
-        let filas = data.trim().split(/\r?\n/);
-filas.shift(); // quitar encabezado
 
-filas.forEach(fila => {
-    let columnas = fila.split(";");
-            estudiantes.push({
-                documento: columnas[0]?.trim(),
-                clave: columnas[1]?.trim(),
-                nombre: columnas[2]?.trim(),
-                curso: columnas[3]?.trim(),
-                nota: columnas[4]?.trim()
+        let filas = data.trim().split(/\r?\n/);
+
+        // Guardar encabezados (separado por TAB)
+        encabezados = filas[0].split("\t");
+
+        // Quitar encabezado
+        filas.shift();
+
+        filas.forEach(fila => {
+
+            let columnas = fila.split("\t");
+
+            // Crear objeto dinámico con todas las columnas
+            let estudiante = {};
+
+            encabezados.forEach((titulo, index) => {
+                estudiante[titulo.trim()] = columnas[index]?.trim();
             });
+
+            estudiantes.push(estudiante);
         });
     });
 
 function login() {
-    let doc = document.getElementById("documento").value;
-    let clave = document.getElementById("clave").value;
+
+    let doc = document.getElementById("documento").value.trim();
+    let clave = document.getElementById("clave").value.trim();
     let resultado = document.getElementById("resultado");
 
     let estudiante = estudiantes.find(e => 
-        e.documento === doc && e.clave === clave
+        e["Documento"] === doc && e["Clave"] === clave
     );
 
     if (estudiante) {
-        resultado.innerHTML =
-            "Bienvenido " + estudiante.nombre + "<br><br>" +
-            "Curso: " + estudiante.curso + "<br>" +
-            "Nota: " + estudiante.nota;
+
+        let tabla = "<h3>Boletín Académico</h3>";
+        tabla += "<strong>Estudiante:</strong> " + estudiante["Nombre"] + "<br>";
+        tabla += "<strong>Curso:</strong> " + estudiante["Curso"] + "<br><br>";
+
+        tabla += "<table border='1' cellpadding='5'>";
+        tabla += "<tr><th>Materia</th><th>Nota</th></tr>";
+
+        // Mostrar desde la columna 4 en adelante (materias)
+        for (let i = 4; i < encabezados.length; i++) {
+
+            let materia = encabezados[i];
+            let nota = estudiante[materia];
+
+            tabla += "<tr><td>" + materia + "</td><td>" + nota + "</td></tr>";
+        }
+
+        tabla += "</table>";
+
+        resultado.innerHTML = tabla;
+
     } else {
-        resultado.innerHTML = "Documento o clave incorrectos";
+        resultado.innerHTML = "<p style='color:red;'>Documento o clave incorrectos</p>";
     }
 }
 
 </script>
 
 </body>
-
 </html>
+
 
 
