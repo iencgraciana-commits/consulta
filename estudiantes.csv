@@ -1,11 +1,11 @@
-Documento;Clave ;Nombre;Curso;CN EA;CoPol;Geo;His;Edu Art;Edu Eti;EFis;Reli;Esp;Ing;Ari;Geo;Info;Emp;Dis
+Documento;Clave ;Nombre;Curso;C. Naturales;Democracia;Geografía;Historia;Edu. Artís.;Edu Ética;Edu. Fissica;Religión;Español;Inglés;Matemáticas;Geografía;Informática;Emprendimento;Disciplina
 1112409714;1112409714;01  Agudelo Gonzalez Juan Sebastian;3;3.4;4.8;;4.8;4.8;4.8;4.8;4.8;4.1;;3.6;2.8;;;4.8
 1112160698;1112160698;02  Bonilla Ramirez Diego Alejandro;3;4.1;5.0;0.2;4.2;5.0;5.0;5.0;5.0;4.2;0.2;3.4;3.0;0.2;0.2;4.8
-1112161866;1112161866;03  Cuero Rivera Juan Jos�;3;4.4;5.0;;4.8;5.0;4.0;4.8;4.8;3.0;;3.2;2.4;;;5.0
+1112161866;1112161866;03  Cuero Rivera Juan José;3;4.4;5.0;;4.8;5.0;4.0;4.8;4.8;3.0;;3.2;2.4;;;5.0
 1097730763;1097730763;04  Espinosa Robayo Lizeth Esperanza;3;3.5;3.8;;4.8;4.8;4.8;4.8;4.8;2.5;;3.2;1.6;;;4.8
-1112409762;1112409762;05  Flori�n Clavijo Lucciana;3;4.5;4.8;;1.6;4.8;4.4;4.8;4.8;2.8;;2.6;2.4;;;4.8
+1112409762;1112409762;05  Florián Clavijo Lucciana;3;4.5;4.8;;1.6;4.8;4.4;4.8;4.8;2.8;;2.6;2.4;;;4.8
 1097920333;1097920333;06  Franco Hernandez Kademyn;3;3.6;4.8;;4.8;4.8;0.8;4.8;4.8;3.8;;3.2;2.4;;;4.8
-1112409638;1112409638;07  Franco Ram�rez Salom�;3;4.4;4.8;;4.8;4.8;4.4;4.8;4.8;4.4;;3.2;2.4;;;4.8
+1112409638;1112409638;07  Franco Ramírez Salomé;3;4.4;4.8;;4.8;4.8;4.4;4.8;4.8;4.4;;3.2;2.4;;;4.8
 1112409478;1112409478;08  Hernandez Arias Sara;3;4.6;4.8;;4.8;4.8;4.5;4.8;4.8;3.8;;2.9;4.8;;;4.8
 1112409477;1112409477;09  Hernandez Arias Sofia;3;4.6;4.8;;4.8;4.8;4.6;4.8;4.8;4.0;;3.4;4.8;;;4.8
 1112161575;1112161575;10  Ipia Orozco Veronica;3;4.0;4.8;;4.8;4.8;4.8;4.8;4.8;4.4;;3.4;2.4;;;4.6
@@ -21,3 +21,4 @@ Documento;Clave ;Nombre;Curso;CN EA;CoPol;Geo;His;Edu Art;Edu Eti;EFis;Reli;Esp;
 1112161671;1112161671;20  Torres Trochez Valentina;3;3.5;4.8;;4.8;4.8;4.6;4.8;4.8;3.8;;1.8;3.6;;;4.8
 1115090228;1115090228;21  Vega Escobar Santiago;3;3.2;4.8;;1.6;4.8;4.8;4.8;4.8;1.6;;3.8;4.8;;;4.8
 87433400;87433400;22 Julio Asguirre Paz;3;3.3;4.9;;1.7;4.8;4.8;4.8;4.8;1.7;;3.9;4.8;;;4.8
+
