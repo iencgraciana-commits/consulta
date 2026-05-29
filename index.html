@@ -1,89 +1,121 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Consulta Académica</title>
 
 <style>
-body {
+
+body{
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #2b5876, #4e4376);
-    text-align: center;
-    color: white;
-    margin: 0;
-    padding: 20px;
+    background: linear-gradient(135deg,#2b5876,#4e4376);
+    margin:0;
+    padding:20px;
+    text-align:center;
+    color:white;
 }
 
-.contenedor {
-    background: white;
-    color: black;
-    max-width: 800px;
-    margin: auto;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+.contenedor{
+    background:white;
+    color:black;
+    max-width:900px;
+    margin:auto;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0px 10px 25px rgba(0,0,0,0.3);
 }
 
-input {
-    padding: 10px;
-    width: 250px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+h2{
+    margin-top:0;
 }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    background: #4e4376;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
+input{
+    width:260px;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    margin:5px;
+    font-size:16px;
 }
 
-button:hover {
-    background: #2b5876;
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#4e4376;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+button:hover{
+    background:#2b5876;
 }
 
-th {
-    background: #4e4376;
-    color: white;
-    padding: 8px;
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
 }
 
-td {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
+th{
+    background:#4e4376;
+    color:white;
+    padding:10px;
 }
 
-.baja { background-color: #ffcccc; }
-.media { background-color: #fff3cd; }
-.alta { background-color: #d4edda; }
-
-.error {
-    color: red;
-    font-weight: bold;
+td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
 }
+
+.baja{
+    background:#ffcccc;
+}
+
+.media{
+    background:#fff3cd;
+}
+
+.alta{
+    background:#d4edda;
+}
+
+.error{
+    color:red;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+.info{
+    margin-top:20px;
+    font-size:18px;
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="contenedor">
 
-<h2>Ingreso al Sistema Académico</h2>
+    <h2>Ingreso al Sistema Académico</h2>
 
-<input type="text" id="documento" placeholder="Documento"><br><br>
-<input type="password" id="clave" placeholder="Clave"><br><br>
+    <input type="text" id="documento" placeholder="Documento">
 
-<button onclick="login()">Ingresar</button>
+    <br>
 
-<div id="resultado"></div>
+    <input type="password" id="clave" placeholder="Clave">
+
+    <br><br>
+
+    <button onclick="login()">
+        Ingresar
+    </button>
+
+    <div id="resultado"></div>
 
 </div>
 
@@ -93,67 +125,137 @@ let estudiantes = [];
 let encabezados = [];
 
 fetch("estudiantes.csv")
-    .then(response => response.text())
-    .then(data => {
+.then(response => response.text())
 
-        let filas = data.trim().split(/\r?\n/);
-        encabezados = filas[0].split(";").map(e => e.trim());
-        filas.shift();
+.then(data => {
 
-        filas.forEach(fila => {
-            let columnas = fila.split(";");
-            let estudiante = {};
+    let filas = data.trim().split(/\r?\n/);
 
-            encabezados.forEach((titulo, index) => {
-                estudiante[titulo] = columnas[index]?.trim();
-            });
+    encabezados = filas[0]
+        .split(";")
+        .map(e => e.trim());
 
-            estudiantes.push(estudiante);
+    filas.shift();
+
+    filas.forEach(fila => {
+
+        let columnas = fila.split(";");
+
+        let estudiante = {};
+
+        encabezados.forEach((titulo,index) => {
+
+            estudiante[titulo] =
+                columnas[index]?.trim() || "";
         });
+
+        estudiantes.push(estudiante);
     });
 
-function login() {
+    console.log(estudiantes);
 
-    let doc = document.getElementById("documento").value.trim();
-    let clave = document.getElementById("clave").value.trim();
-    let resultado = document.getElementById("resultado");
+})
 
-    let estudiante = estudiantes.find(e => 
-        e["Documento"] === doc && e["Clave"] === clave
+.catch(error => {
+
+    console.log(error);
+
+    document.getElementById("resultado").innerHTML =
+        "<p class='error'>Error cargando estudiantes.csv</p>";
+});
+
+function login(){
+
+    let doc =
+        document.getElementById("documento")
+        .value
+        .trim();
+
+    let clave =
+        document.getElementById("clave")
+        .value
+        .trim();
+
+    let resultado =
+        document.getElementById("resultado");
+
+    let estudiante = estudiantes.find(e =>
+
+        e["Documento"]?.trim() === doc &&
+        e["Clave"]?.trim() === clave
     );
 
-    if (estudiante) {
+    if(estudiante){
 
-        let tabla = "<h3>Promedio 1er Período</h3>";
-        tabla += "<strong>Estudiante:</strong> " + estudiante["Nombre"] + "<br>";
-        tabla += "<strong>Curso:</strong> " + estudiante["Curso"] + "<br><br>";
+        let tabla = "";
+
+        tabla += `
+            <div class="info">
+                <strong>Estudiante:</strong>
+                ${estudiante["Apellidos y Nombres de Estudiantes"]}
+                <br><br>
+
+                <strong>¿Debe asistir a reunión?</strong>
+                ${estudiante["¿DEBE ASISTIR A RUNION 29/05/2026"]}
+            </div>
+        `;
 
         tabla += "<table>";
-        tabla += "<tr><th>Materia</th><th>Nota</th></tr>";
 
-        for (let i = 4; i < encabezados.length; i++) {
+        tabla += `
+            <tr>
+                <th>Materia</th>
+                <th>Nota</th>
+            </tr>
+        `;
+
+        for(let i = 4; i < encabezados.length; i++){
 
             let materia = encabezados[i];
+
             let nota = estudiante[materia];
 
             let clase = "";
-            let valor = parseFloat(nota);
 
-            if (!isNaN(valor)) {
-                if (valor < 3) clase = "baja";
-                else if (valor < 4) clase = "media";
-                else clase = "alta";
+            let valor = parseFloat(
+                String(nota).replace(",", ".")
+            );
+
+            if(!isNaN(valor)){
+
+                if(valor < 3){
+
+                    clase = "baja";
+
+                }else if(valor < 4){
+
+                    clase = "media";
+
+                }else{
+
+                    clase = "alta";
+                }
             }
 
-            tabla += `<tr class="${clase}"><td>${materia}</td><td>${nota || ""}</td></tr>`;
+            tabla += `
+                <tr class="${clase}">
+                    <td>${materia}</td>
+                    <td>${nota}</td>
+                </tr>
+            `;
         }
 
         tabla += "</table>";
 
         resultado.innerHTML = tabla;
 
-    } else {
-        resultado.innerHTML = "<p class='error'>Documento o clave incorrectos</p>";
+    }else{
+
+        resultado.innerHTML = `
+            <p class="error">
+                Documento o clave incorrectos
+            </p>
+        `;
     }
 }
 
@@ -161,4 +263,5 @@ function login() {
 
 </body>
 </html>
+```
 
