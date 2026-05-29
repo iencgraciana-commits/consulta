@@ -1,26 +1,35 @@
-Documento;Clave;Nombre;Asiste a Reunión;Curso;C. Naturales;Democracia;Geografía;Historia;Edu Artística;Edu Ética;E.Fisica;Religión;Español;Inglés;Matemáticas;Geometría Est;Informática;Emprendiemiento;Disciplina
-1112409714;1112409714;Si;01  Agudelo Gonzalez Juan Sebastian;8;3.4;4.8;N/A;4.8;4.8;4.8;4.8;4.8;4.1;N/A;3.6;2.8;N/A;N/A;4.8
-1112160698;1112160698;02 Bonilla Ramirez Diego Alejandro;Si;3;4.1;5.0;N/A;4.2;5.0;5.0;5.0;5.0;4.2;N/A;3.4;3.0;N/A;N/A;4.8
-1112161866;1112161866;03  Cuero Rivera Juan José;3;4.4;5.0;N/A;4.8;5.0;4.0;4.8;4.8;3.0;N/A;3.2;2.4;N/A;N/A;5.0
-1097730763;1097730763;04  Espinosa Robayo Lizeth Esperanza;3;3.5;3.8;N/A;4.8;4.8;4.8;4.8;4.8;2.5;N/A;3.2;1.6;N/A;N/A;4.8
-1112409762;1112409762;05  Florián Clavijo Lucciana;3;4.5;4.8;N/A;1.6;4.8;4.4;4.8;4.8;2.8;N/A;2.6;2.4;N/A;N/A;4.8
-1097920333;1097920333;06  Franco Hernandez Kademyn;3;3.6;4.8;N/A;4.8;4.8;0.8;4.8;4.8;3.8;N/A;3.2;2.4;N/A;N/A;4.8
-1112409638;1112409638;07  Franco Ramírez Salomé;3;4.4;4.8;N/A;4.8;4.8;4.4;4.8;4.8;4.4;N/A;3.2;2.4;N/A;N/A;4.8
-1112409478;1112409478;08  Hernandez Arias Sara;3;4.6;4.8;N/A;4.8;4.8;4.5;4.8;4.8;3.8;N/A;2.9;4.8;N/A;N/A;4.8
-1112409477;1112409477;09  Hernandez Arias Sofia;3;4.6;4.8;N/A;4.8;4.8;4.6;4.8;4.8;4.0;N/A;3.4;4.8;N/A;N/A;4.8
-1112161575;1112161575;10  Ipia Orozco Veronica;3;4.0;4.8;N/A;4.8;4.8;4.8;4.8;4.8;4.4;N/A;3.4;2.4;N/A;N/A;4.6
-1112161164;1112161164;11  Jaramillo Alvarado Salome;3;4.1;4.8;N/A;4.8;4.8;4.8;4.8;4.8;4.1;N/A;3.7;2.4;N/A;N/A;4.8
-1112161683;1112161683;12  Marquez Alzate Valery;3;3.5;4.8;N/A;4.8;4.8;3.3;4.8;4.8;3.4;N/A;1.6;2.4;N/A;N/A;4.8
-1112159989;1112159989;13  Mejia Erazo Alan;3;4.0;4.8;N/A;4.8;4.8;4.7;4.8;4.8;4.1;N/A;3.2;2.4;N/A;N/A;4.8
-1112162472;1112162472;14  Mejia Erazo Jean Carlos;3;3.8;4.8;N/A;4.8;4.8;2.8;4.8;4.8;3.7;N/A;2.7;2.0;N/A;N/A;4.6
-1112160298;1112160298;15  Narvaez Ospina Yurain Camilo;3;3.3;4.8;N/A;4.8;4.8;2.8;4.8;4.8;2.0;N/A;3.1;1.6;N/A;N/A;4.6
-1112410012;1112410012;16  Paz Morales Mathias;3;4.2;4.8;N/A;1.6;4.8;4.1;4.8;4.8;4.1;N/A;3.6;2.4;N/A;N/A;4.8
-1112161356;1112161356;17  Ramirez Garcia Jeronimo;3;4.5;4.8;N/A;4.8;4.8;4.8;4.8;4.8;4.2;N/A;3.4;2.0;N/A;N/A;4.8
-1112409165;1112409165;18  Ramos Rodriguez Gabriela;3;4.5;4.8;N/A;1.6;4.8;4.4;4.8;4.8;3.7;N/A;3.6;2.0;N/A;N/A;4.8
-1115094479;1115094479;19  Sanese Rincon Emily Sofia;3;3.4;3.8;N/A;4.8;4.8;4.4;4.8;4.8;3.1;N/A;3.5;2.0;N/A;N/A;4.8
-1112161671;1112161671;20  Torres Trochez Valentina;3;3.5;4.8;N/A;4.8;4.8;4.6;4.8;4.8;3.8;N/A;1.8;3.6;N/A;N/A;4.8
-1115090228;1115090228;21  Vega Escobar Santiago;3;3.2;4.8;N/A;1.6;4.8;4.8;4.8;4.8;1.6;N/A;3.8;4.8;N/A;N/A;4.8
-87433400;87433400;22 Julio Asguirre Paz;3;3.3;4.9;N/A;1.7;4.8;4.8;4.8;4.8;1.7;N/A;3.9;4.8;N/A;N/A;4.8
+;;Institución Educativa NARCISO CABAL SALCEDO;;;;;;;;;;;;
+;;Sede: 3 Graciana Álvarez;;;;;;;;;;;;
+;;Consolidado de Valoraciones Periódicas por Asignaturas del Grupo 3  -  Tercero 2;;;;;;;;;;;;
+;;Jornada: Tarde;;;;;;;;;;;;
+;;Periodo: 2;;;;;;;;;;;;
+;;Dirección de Grupo: Julio Ferney Aguirre Paz;;;;;;;;;;;;
+;;Año Lectivo: 2026;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+Documento;Clave;Apellidos y Nombres de Estudiantes;¿DEBE ASISTIR A RUNION 29/05/2026;CN EA;CoPol;His;Edu Art;Edu Eti;EFis;Reli;Esp;Ing;Ari;Geo
+1112409714;1112409714;01  Agudelo Gonzalez Juan Sebastian;SI;3,6;4,8;3,8;4,8;3,3;4,8;3,2;1,6;3,2;2,3;3,5
+1112160698;1112160698;02  Bonilla Ramirez Diego Alejandro;SI;4,3;4;3,6;1;4,6;5;4,4;4,8;5;2,9;2,9
+1112161866;1112161866;03  Cuero Rivera Juan José;SI;2,8;4;3,6;4,6;2,7;5;1,8;5;1,8;2,4;1,8
+1097730763;1097730763;04  Espinosa Robayo Lizeth Esperanza;NO;4,3;5;4,9;5;4,9;5;3,3;5;4,9;4,8;4,8
+1112409762;1112409762;05  Florián Clavijo Lucciana;SI;2,7;2,4;4,1;3,2;4,5;4,8;3,6;3,2;4,8;1,7;2,8
+1097920333;1097920333;06  Franco Hernandez Kademyn;SI;2,6;4,8;3,4;3,6;3;4,8;4;4,8;4,8;1,8;2,2
+1112409638;1112409638;07  Franco Ramírez Salomé;SI;4,4;4,8;4,6;4,8;4,2;4,8;2,6;4,1;3,2;3,5;3,8
+1115092306;1115092306;08  Gomez Rodas Thiago Andres;SI;2,9;0,8;3,4;0,8;0,8;4,8;0,8;0,8;1,6;2;2,8
+1112409478;1112409478;09  Hernandez Arias Sara;SI;3,2;4,8;4,3;3,6;4,5;4,8;3,8;0,8;3,2;2,9;3
+1112409477;1112409477;10  Hernandez Arias Sofia;SI;3,6;1,6;3,4;4;4,5;4,8;4,4;0,8;3,2;3,9;2,9
+1112161575;1112161575;11  Ipia Orozco Veronica;SI;3,1;3,2;3,4;4;3,8;4,8;4,6;0,8;4,8;3,5;3,2
+1112161164;1112161164;12  Jaramillo Alvarado Salome;NO;3,2;5;5;4,6;4,2;5;4,7;5;5;3,9;4,4
+1112161683;1112161683;13  Marquez Alzate Valery;SI;3;3,8;4,3;3,6;3,6;4,8;4;4,8;3,2;1,8;2,9
+1112159989;1112159989;14  Mejia Erazo Alan;SI;3,2;1;3,6;4,6;4,6;5;2,5;3,8;3,4;3,3;3,5
+1112162472;1112162472;15  Mejia Erazo Jean Carlos;SI;2,7;1;3,6;1,8;3,8;5;2,3;3,8;5;1,9;3
+1112160298;1112160298;16  Narvaez Ospina Yurain Camilo;SI;3,5;1;4;3,4;3,5;5;4,1;1,8;3,4;2,8;2,5
+1112410012;1112410012;17  Paz Morales Mathias;SI;2,7;4,8;3,4;4,4;4;4,8;3,4;4;3,2;2,1;3,5
+1112161356;1112161356;18  Ramirez Garcia Jeronimo;SI;4,1;4,8;4,4;2,4;4,5;4,8;3,2;4,8;4,8;3,6;3,9
+1112409165;1112409165;19  Ramos Rodriguez Gabriela;NO;4,5;5;4,7;5;4,9;5;4,7;5;5;4;4,6
+1115094479;1115094479;20  Sanese Rincon Emily Sofia;SI;3,1;3,2;4,3;4,4;4,2;4,8;4,2;3,8;0,8;2,5;4
+1112161671;1112161671;21  Torres Trochez Valentina;SI;3,7;3,3;4,1;4;3,8;4,8;4,5;4,4;0,8;2,9;3,6
+1115090228;1115090228;22  Vega Escobar Santiago;SI;4,3;3,8;2,8;0,8;4,5;4,8;3,2;0,8;3,2;3,7;3,7
+
 
 
 
