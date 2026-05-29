@@ -1,20 +1,133 @@
-```html id="q5kscx"
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Consulta Académica</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#2b5876,#4e4376);
+    margin:0;
+    padding:20px;
+    text-align:center;
+    color:white;
+}
+
+.contenedor{
+    background:white;
+    color:black;
+    max-width:900px;
+    margin:auto;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0px 10px 25px rgba(0,0,0,0.3);
+}
+
+input{
+    width:260px;
+    padding:12px;
+    margin:5px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#4e4376;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2b5876;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th{
+    background:#4e4376;
+    color:white;
+    padding:10px;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+
+.baja{
+    background:#ffcccc;
+}
+
+.media{
+    background:#fff3cd;
+}
+
+.alta{
+    background:#d4edda;
+}
+
+.error{
+    color:red;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<h2>Ingreso al Sistema Académico</h2>
+
+<input type="text" id="documento" placeholder="Documento">
+
+<br>
+
+<input type="password" id="clave" placeholder="Clave">
+
+<br><br>
+
+<button onclick="login()">
+Ingresar
+</button>
+
+<div id="resultado"></div>
+
+</div>
+
 <script>
 
 let estudiantes = [];
-let encabezados = [];
 
 fetch("estudiantes.csv")
+
 .then(response => response.text())
 
 .then(data => {
 
     let filas = data.trim().split(/\r?\n/);
 
-    encabezados = filas[0]
-        .replace(/\uFEFF/g, "")
-        .split(";")
-        .map(e => e.trim());
+    let encabezados = filas[0]
+        .replace(/\uFEFF/g,"")
+        .split(";");
 
     filas.shift();
 
@@ -24,9 +137,9 @@ fetch("estudiantes.csv")
 
         let estudiante = {};
 
-        encabezados.forEach((titulo, index) => {
+        encabezados.forEach((titulo,index)=>{
 
-            estudiante[titulo] =
+            estudiante[titulo.trim()] =
                 columnas[index]?.trim() || "";
         });
 
@@ -34,17 +147,9 @@ fetch("estudiantes.csv")
     });
 
     console.log(estudiantes);
-})
-
-.catch(error => {
-
-    console.log(error);
-
-    document.getElementById("resultado").innerHTML =
-        "<p class='error'>Error cargando estudiantes.csv</p>";
 });
 
-function login() {
+function login(){
 
     let doc =
         document.getElementById("documento")
@@ -56,23 +161,20 @@ function login() {
         .value
         .trim();
 
-    let resultado =
-        document.getElementById("resultado");
-
     let estudiante = estudiantes.find(e =>
 
         e["Documento"] == doc &&
         e["Clave"] == clave
     );
 
-    if (estudiante) {
+    if(estudiante){
 
         let html = "";
 
         html += `
-            <h3>
+            <h2>
                 ${estudiante["Apellidos y Nombres de Estudiantes"]}
-            </h3>
+            </h2>
         `;
 
         html += `
@@ -82,65 +184,75 @@ function login() {
             </p>
         `;
 
-        html += "<table>";
-
         html += `
+            <table>
+
             <tr>
                 <th>Materia</th>
                 <th>Nota</th>
             </tr>
         `;
 
-        for (let i = 4; i < encabezados.length; i++) {
+        Object.keys(estudiante).forEach(key => {
 
-            let materia = encabezados[i];
+            if(
+                key != "Documento" &&
+                key != "Clave" &&
+                key != "Apellidos y Nombres de Estudiantes" &&
+                key != "REUNION"
+            ){
 
-            let nota = estudiante[materia];
+                let nota = estudiante[key];
 
-            let clase = "";
+                let valor = parseFloat(
+                    String(nota).replace(",",".")
+                );
 
-            let valor = parseFloat(
-                String(nota).replace(",", ".")
-            );
+                let clase = "";
 
-            if (!isNaN(valor)) {
+                if(!isNaN(valor)){
 
-                if (valor < 3) {
+                    if(valor < 3){
 
-                    clase = "baja";
+                        clase = "baja";
 
-                } else if (valor < 4) {
+                    }else if(valor < 4){
 
-                    clase = "media";
+                        clase = "media";
 
-                } else {
+                    }else{
 
-                    clase = "alta";
+                        clase = "alta";
+                    }
                 }
-            }
 
-            html += `
-                <tr class="${clase}">
-                    <td>${materia}</td>
-                    <td>${nota}</td>
-                </tr>
-            `;
-        }
+                html += `
+                    <tr class="${clase}">
+                        <td>${key}</td>
+                        <td>${nota}</td>
+                    </tr>
+                `;
+            }
+        });
 
         html += "</table>";
 
-        resultado.innerHTML = html;
+        document.getElementById("resultado")
+            .innerHTML = html;
 
-    } else {
+    }else{
 
-        resultado.innerHTML = `
-            <p class="error">
-                Documento o clave incorrectos
-            </p>
-        `;
+        document.getElementById("resultado")
+            .innerHTML = `
+                <p class="error">
+                    Documento o clave incorrectos
+                </p>
+            `;
     }
 }
 
 </script>
-```
 
+</body>
+</html>
+```
